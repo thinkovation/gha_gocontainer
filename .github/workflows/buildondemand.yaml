@@ -27,10 +27,7 @@ jobs:
             ${{ runner.os }}-go-
 
       - name: Build the Go application
-        run: |
-          cd docker  # Navigate to the docker directory
-          GOOS=linux GOARCH=amd64 go build -o app .
-          cd ..      # Navigate back to the root directory
+        run: GOOS=linux GOARCH=amd64 go build -o app .
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
