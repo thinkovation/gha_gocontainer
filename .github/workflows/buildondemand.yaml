@@ -27,7 +27,7 @@ jobs:
             ${{ runner.os }}-go-
 
       - name: Build the Go application
-        run: GOOS=linux GOARCH=amd64 go build -o app .
+        run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o app .
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
