@@ -35,7 +35,7 @@ jobs:
         run: echo "MODULE_NAME=$(grep '^module ' go.mod | awk '{print $2}')" >> $GITHUB_ENV
 
       - name: Build the Go app
-        run: GOOS=linux GOARCH=amd64 go build -o app .
+        run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o app .
 
       - name: Build Docker image
         run: docker build -t ghcr.io/${{ github.repository }}/$MODULE_NAME:latest .
